@@ -53,7 +53,7 @@ router.get("/", verify, async (req, res) => {
         ]);
       }
     } else {
-      list = await List.aggregate([{ $sample: { size: 10 } }]);
+      list = await List.aggregate([{ $sample: { size: 4 } }]);
     }
     res.status(200).json(list);
   } catch (err) {

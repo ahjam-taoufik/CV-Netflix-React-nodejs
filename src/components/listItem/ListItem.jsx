@@ -5,12 +5,37 @@ import {
   ThumbUpAltOutlined,
   ThumbDownOutlined,
 } from "@material-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function ListItem({ index }) {
+export default function ListItem({ index,item }) {
   const [isHovered, setIsHovered] = useState(false);
-  
+  const [movie, setMovie] = useState({});
+
+  useEffect(() => {
+    const getMovie = async () => {
+      try {
+        const res = await axios.get("/movies/find/" + item, 
+        {
+          headers: {
+            token:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ3ZjBiMjA4MzczYTM0YjE1ODkyOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODczMjk2MiwiZXhwIjoxNjQ5MTY0OTYyfQ.xo9MY4WeBc8tcPVhUulwaC2RqPNWhtvJqAuPD1Dts28"
+          },
+        }
+        );
+        setMovie(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMovie();
+  }, [item]);
+
+
+
   return (
+   
+
     <div
       className="listItem"
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
@@ -18,11 +43,12 @@ export default function ListItem({ index }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src="https://images.unsplash.com/photo-1639023698782-71ef93c6af90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        src={movie?.imgSm}
         alt=""
       />
       {isHovered && (
         <>
+        {/* <video src={movie.trailer} autoPlay={true} loop /> */}
           <div className="itemInfo">
             <div className="icons">
               <PlayArrow className="icon" />
@@ -31,18 +57,18 @@ export default function ListItem({ index }) {
               <ThumbDownOutlined className="icon" />
             </div>
             <div className="itemInfoTop">
-              <span className="limit">+12</span>
-              <span>1 H(s) 50 mins</span>
-              <span>1984</span>
+              <span className="limit">+{movie.limit} </span>
+              <span>{movie.duration}</span>
+              <span>{movie.year}</span>
             </div>
             <div className="desc">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Praesentium hic rem eveniet error possimus, neque ex .
+               {movie.desc}
             </div>
-            <div className="genre">Music</div>
+            <div className="genre">{movie.genre}</div>
           </div>
         </>
       )}
     </div>
+  
   );
 }
