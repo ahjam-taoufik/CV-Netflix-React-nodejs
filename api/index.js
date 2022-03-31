@@ -17,10 +17,10 @@ mongoose
   })
   .then(() => console.log('DB Connection Successfull'))
   .catch((err) => {
-    console.error(err);
+    console.error(err); 
   });
-
-  app.use(express.json());
+ 
+  app.use(express.json()); 
  
   app.use("/api/auth", authRoute);
   app.use("/api/users", userRoute);
