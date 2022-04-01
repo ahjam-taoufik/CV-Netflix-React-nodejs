@@ -58,14 +58,14 @@ export default function ListItem({ index,item }) {
               <ThumbDownOutlined className="icon" />
             </div>
             <div className="itemInfoTop">
-              <span className="limit">+{movie.limit} </span>
-              <span>{movie.duration}</span>
-              <span>{movie.year}</span>
+              <span className="limit">+{movie?.limit} </span>
+              <span>{movie?.duration}</span>
+              <span>{movie?.year}</span>
             </div>
             <div className="desc">
-               {movie.desc}
+               {movie?.desc}
             </div>
-            <div className="genre">{movie.genre}</div>
+            <div className="genre">{movie?.genre}</div>
           </div>
         </>
       )}
