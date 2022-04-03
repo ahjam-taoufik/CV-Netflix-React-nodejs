@@ -1,80 +1,106 @@
+@import '../../App.scss';
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 .featured {
-    height: 90vh;
-    position: relative;
-  
-    .category {
-      position: absolute;
-      top: 80px;
-      left: 50px;
-      font-size: 30px;
-      font-weight: 500;
+  height: 90vh;
+  position: relative;
+
+  .Bigtitle {
+    font-family: 'Abril Fatface', cursive;
+    background: linear-gradient(to top, #ffee00b4 0%, #0011ff9f 100%);
+    margin: 0 auto 0 0;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border-radius: 8px;
+    padding: 5px 10px;
+    box-shadow: 0 1.8px 2.2px rgba(245, 208, 208, 0.14),
+      0 6.7px 5.3px rgba(243, 197, 197, 0.48), 
+      0 12.5px 10px rgba(248, 145, 145, 0.6),
+      0 2.3px 17.9px rgba(241, 152, 152, 0.72), 
+      0 1.8px 33.4px rgba(252, 147, 147, 0.86),
+      0 10px 40px rgba(198, 240, 208, 0.12);
+
+  }
+
+  .category {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+
+    select {
+      cursor: pointer;
+      background-color: var(--main-color);
+      border: 1px solid white;
       color: white;
-      display: flex;
-      align-items: center;
-  
-      select {
-        cursor: pointer;
-        background-color: var(--main-color);
-        border: 1px solid white;
-        color: white;
-        margin-left: 20px;
-        padding: 5px;
-      }
+      margin-left: 20px;
+      padding: 5px;
     }
-  
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info {
+    width: 35%;
+    position: absolute;
+    left: 50px;
+    bottom: 100px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 150px;
+      height: 150px;
     }
-  
-    .info {
-      width: 35%;
-      position: absolute;
-      left: 50px;
-      bottom: 100px;
-      color: white;
+
+    .desc {
+      margin: 20px 0px;
+
+      @include mobile {
+        width: 300px;
+      }
+    }
+
+    .buttons {
       display: flex;
-      flex-direction: column;
-  
-      img {
-        width: 150px;
-        height: 150px;
-      }
-  
-      .desc {
-        margin: 20px 0px;
-      }
-  
-      .buttons {
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
         display: flex;
-  
-        button {
-          padding: 10px 20px;
-          border: none;
-          border-radius: 5px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 18px;
-          font-weight: 500;
-          margin-right: 10px;
-          cursor: pointer;
-  
-          &.play {
-            background-color: white;
-            color: var(--main-color);
-          }
-  
-          &.more {
-            background-color: gray;
-            color: white;
-          }
-  
-          span {
-            margin-left: 5px;
-          }
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 500;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &.play {
+          background-color: white;
+          color: var(--main-color);
+        }
+
+        &.more {
+          background-color: gray;
+          color: white;
+        }
+
+        span {
+          margin-left: 5px;
         }
       }
     }
   }
+}

@@ -1,3 +1,5 @@
+@import '../../App.scss';
+
 .navbar {
     width: 100%;
     color: white;
@@ -6,7 +8,14 @@
     top: 0;
     z-index: 999;
     background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
-  
+     
+    .phone{
+      @include mobile {
+        display: none;
+      }
+    }
+    
+
     &.scrolled{
       background-color: var(--main-color);
     }
@@ -17,6 +26,10 @@
       align-items: center;
       justify-content: space-between;
       height: 70px;
+
+      @include mobile {
+        padding: 5px 20px;
+      }
   
       .left {
         display: flex;
@@ -24,12 +37,24 @@
   
         img {
           height: 25px;
-          margin-right: 40px;
+          margin-right: 10px;
+        
+         
         }
   
         span {
           margin-right: 20px;
           cursor: pointer;
+
+          @include tablet {
+            display: none;
+          }
+
+          &.tablet {
+            @include tablet {
+              display: block;
+            }
+          }
         }
       }
   
@@ -40,6 +65,7 @@
         .icon {
           margin: 0px 15px;
           cursor: pointer;
+         
         }
   
         img {

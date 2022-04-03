@@ -11,17 +11,14 @@ export default function Register() {
   const navigate = useNavigate();
 
   const emailRef = useRef();
-  // const passwordRef = useRef();
-  // const usernameRef = useRef();
 
   const handleStart = () => {
     setEmail(emailRef.current.value);
+  
   };
 
   const handleFinish = async (e) => {
     e.preventDefault();
-    // setPassword(passwordRef.current.value);
-    // setUsername(usernameRef.current.value);
     try {
       await axios.post("auth/register", { email,username,password});
       navigate("/login");
@@ -29,6 +26,10 @@ export default function Register() {
       console.log(err);
     }
   };
+
+  const testMode = () => {
+    navigate("/login");
+  }
 
  
   return (
@@ -49,12 +50,20 @@ export default function Register() {
         <p>
           Ready to watch? Enter your email to create or restart your membership.
         </p>
+        <p className='testMode'>
+             This is a test click on Sign In to enter       
+          </p>
 
         {!email ? (
           <>
           <div className="input">
             <input type="email" placeholder="email address" ref={emailRef} />
-            <button className="registerButton" onClick={handleStart}>
+            {/* <button className="registerButton" onClick={handleStart}>
+              Get Started
+            </button> */}
+            <button className="registerButton"
+              onClick={testMode}
+             >
               Get Started
             </button>
           </div>

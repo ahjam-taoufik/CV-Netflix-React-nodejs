@@ -3,20 +3,30 @@ import { AuthContext } from '../../authContext/AuthContext';
 import './login.scss';
 import { login } from './../../authContext/apiCalls';
 import { useNavigate } from 'react-router-dom';
+import { toastError } from '../../utils/toastMessage';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    login({ email, password }, dispatch);
-  };
+    if(!email || !password) {
+      toastError({title:'Please enter email and password'})
+      return;
+    }
+    try {    
+      login({ email, password }, dispatch);
+    } catch (error) {
+    }
+            
+    }
 
-const handleSign = () => {
+  const handleSign = () => {
     navigate('/register');
-}
+  };
 
   return (
     <div className="login">
@@ -30,6 +40,11 @@ const handleSign = () => {
         </div>
       </div>
       <div className="container">
+        <div className="testLoginPassword">
+          <h2>Login Test : test@gmail.com</h2>
+          <h2>Password Test : 123456</h2>
+        </div>
+
         <form>
           <h1>Sign In</h1>
           <input
@@ -43,9 +58,14 @@ const handleSign = () => {
             autoComplete="on"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="loginButton" onClick={handleLogin}>Sign In</button>
+          <button className="loginButton" onClick={handleLogin}>
+            Sign In
+          </button>
           <span>
-            New to Netflix? <b className="b" onClick={handleSign}  >Sign up now.</b>
+            New to Netflix?{' '}
+            <b className="b" onClick={handleSign}>
+              Sign up now.
+            </b>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a
