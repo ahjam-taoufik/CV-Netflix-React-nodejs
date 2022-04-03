@@ -35,7 +35,7 @@ import {
           />
           <div className="container" ref={listRef}>
           {list.content.map((item, i) => (
-            <ListItem index={i} item={item} />
+            <ListItem index={i} item={item} key={i} />
           ))}
           </div>
           <ArrowForwardIosOutlined
@@ -44,5 +44,6 @@ import {
           />
         </div>
       </div>
+    
     );
   }

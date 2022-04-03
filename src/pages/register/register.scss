@@ -9,6 +9,19 @@
       url("https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg");
     background-size: cover;
     position: relative;
+
+    .loginButton {
+      margin-top: 15px;
+     
+      background-color: rgb(255, 34, 34);
+      border: none;
+      color: white;
+      border-radius: 5px;
+      padding: 15px 25px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
   
     .top {
       .wrapper {
@@ -21,16 +34,6 @@
           height: 40px;
         }
   
-        .loginButton {
-          background-color: red;
-          border: none;
-          color: white;
-          border-radius: 5px;
-          padding: 5px 15px;
-          font-size: 16px;
-          font-weight: 500;
-          cursor: pointer;
-        }
       }
     }
   

@@ -49,11 +49,11 @@ router.get("/", verify, async (req, res) => {
       } else {
         list = await List.aggregate([
           { $sample: { size: 10 } },
-          { $match: { type: typeQuery } },
+          { $match: { type: typeQuery } }, 
         ]);
       }
     } else {
-      list = await List.aggregate([{ $sample: { size: 4 } }]);
+      list = await List.aggregate([{ $sample: { size: 10 } }]);
     }
     res.status(200).json(list);
   } catch (err) {
